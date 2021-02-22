@@ -72,11 +72,11 @@ module Enumerable
       true
     end
   
-    def my_count(para = nil)
+    def my_count(param = nil)
       counter = 0
       if block_given?
         to_a.my_each { |val| counter += 1 if yield(val) }
-      elsif para
+      elsif param
         to_a.my_each { |val| counter += 1 if para == val }
       else counter = to_a.length
       end
