@@ -27,15 +27,15 @@ module Enumerable
       is_a?(Array) || is_a?(Range) ? arr : arr.to_h
     end
   
-    def my_all?(para = nil)
-      if !block_given? && !para
+    def my_all?(param = nil)
+      if !block_given? && !param
         to_a.my_each { |val| return false unless val }
-      elsif para.is_a?(Class)
-        to_a.my_each { |val| return false unless val.is_a?(para) }
-      elsif para.is_a?(Regexp)
-        to_a.my_each { |val| return false unless para.match(val) }
-      elsif para
-        to_a.my_each { |val| return false unless val == para }
+      elsif param.is_a?(Class)
+        to_a.my_each { |val| return false unless val.is_a?(param) }
+      elsif param.is_a?(Regexp)
+        to_a.my_each { |val| return false unless param.match(val) }
+      elsif param
+        to_a.my_each { |val| return false unless val == param }
       else
         to_a.my_each { |val| return false unless yield(val) }
       end
