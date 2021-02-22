@@ -42,15 +42,15 @@ module Enumerable
       true
     end
   
-    def my_any?(para = nil)
-      if !block_given? && !para
+    def my_any?(param = nil)
+      if !block_given? && !param
         to_a.my_each { |val| return true if val }
-      elsif para.is_a?(Class)
-        to_a.my_each { |val| return true if val.is_a?(para) }
-      elsif para.is_a?(Regexp)
-        to_a.my_each { |val| return true if para.match(val) }
-      elsif para
-        to_a.my_each { |val| return true if val == para }
+      elsif param.is_a?(Class)
+        to_a.my_each { |val| return true if val.is_a?(param) }
+      elsif param.is_a?(Regexp)
+        to_a.my_each { |val| return true if param.match(val) }
+      elsif param
+        to_a.my_each { |val| return true if val == param }
       else
         to_a.my_each { |val| return true if yield(val) }
       end
